@@ -67,3 +67,13 @@ function getWeather() {
 }
 
 getWeather();
+
+function countRabbits(params) {
+  document
+    .querySelector(
+      ".app-page__top-left-side-search"
+    )
+    .classList.toggle(
+      "visually-hidden"
+    );
+}
