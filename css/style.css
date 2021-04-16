@@ -6,8 +6,12 @@
 
 body {
   min-width: 320px;
-  color: #000;
+  color: #fff;
   background-color: #498cec;
+
+  font-family: "Lato";
+  font-weight: normal;
+  font-style: normal;
 }
 
 a {
@@ -35,7 +39,129 @@ ul {
   overflow: hidden;
 }
 
+.btn {
+  padding: 0;
+  border: none;
+  background: none;
+
+  cursor: pointer;
+  color: #fff;
+}
+
 .app-page {
-  max-width: 1366px;
-  margin: 20px auto 0;
+  max-width: 1210px;
+  margin: 80px auto 0;
+}
+
+.app-page__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-page__top-left-side {
+  margin-left: 20px;
+}
+
+.app-page__top-left-side-city {
+  font-size: 50px;
+  margin: 0;
+}
+
+.app-page__top-left-side-btn-change-city,
+.app-page__top-left-side-btn-find-location {
+  opacity: 0.6;
+
+  font-size: 18px;
+}
+
+.app-page__top-left-side-btn {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.app-page__top-left-side-btn-change-city {
+  margin-right: 60px;
+}
+
+.app-page__top-right-side-scale-change {
+  border: 1px solid
+    rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+}
+
+.app-page__top-right-side-scale-change-celsium,
+.app-page__top-right-side-scale-change-fahrengeit {
+  font-size: 18px;
+  opacity: 0.4;
+
+  padding: 4px 12px;
+}
+
+.btn-scale-change--active {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  );
+  opacity: 1;
+}
+
+.app-page__middle {
+  margin-top: 210px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.app-page__middle-temp {
+  display: flex;
+  align-items: center;
+}
+
+.app-page__middle-temp-icon {
+  width: 140px;
+  height: 140px;
+
+  background-color: rgba(
+    255,
+    255,
+    2552,
+    0.2
+  );
+}
+
+.app-page__middle-temp-value {
+  font-size: 180px;
+}
+
+.app-page__middle-temp-description {
+  font-size: 25px;
+}
+
+.app-page__bottom {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 230px;
+  margin-left: 25px;
+  margin-right: 115px;
+}
+
+.app-page__bottom-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-page__bottom-text-item {
+  font-size: 18px;
+  opacity: 0.6;
+}
+.app-page__bottom-value-item {
+  margin-top: 12px;
+
+  font-size: 25px;
+  opacity: 0.6;
 }
