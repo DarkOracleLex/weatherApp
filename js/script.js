@@ -1,7 +1,7 @@
 function getWeather() {
   //Получаем прогноз в массив data
   fetch(
-    "http://api.openweathermap.org/data/2.5/weather?id=1496153&lang=ru&appid=0dc8b590c550c2291b49cb1f99a2c58d"
+    "https://api.openweathermap.org/data/2.5/weather?id=1496153&lang=ru&appid=0dc8b590c550c2291b49cb1f99a2c58d"
   )
     .then(function (resp) {
       return resp.json();
