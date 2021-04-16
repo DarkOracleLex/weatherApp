@@ -7,10 +7,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>weatherApp</title>
 
+  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <h1 class="visually-hidden">Приложение для просмотра погоды</h1>
+  <main class="app-page">
+    <div class="app-page__top">
+      <div class="app-page__top-left-side">
+        <p class="app-page__top-left-side-city">Омск</p>
+        <button class="app-page__top-left-side-btn-change-city">Сменить город</button>
+        <button class="app-page__top-left-side-btn-find-location">Моё местоположение</button>
+      </div>
+      <div class="app-page__top-right-side">
+        <div class="app-page__top-right-side-scale-change">
+          <button class="app-page__top-right-side-scale-change-celsium">C</button>
+          <button class="app-page__top-right-side-scale-change-fahrengeit">F</button>
+        </div>
+      </div>
+      <div class="app-page__top-right-side"></div>
+    </div>
+    <div class="app-page__middle">
+      <div class="app-page__middle-temp">
+        <span class="app-page__middle-temp-icon"></span>
+        <span class="app-page__middle-temp-value">19&#176;</span>
+      </div>
+    </div>
+    <div class="app-page__bottom">
+      <div class="app-page__bottom-wind">
+        <span class="app-page__bottom-wind-text">Ветер</span>
+        <span class="app-page__bottom-wind-value">5 м/c, западный</span>
+      </div>
+      <div class="app-page__bottom-pressure">
+        <span class="app-page__bottom-pressure-text">Давление</span>
+        <span class="app-page__bottom-pressure-value">752 мм рт. ст.</span>
+      </div>
+      <div class="app-page__bottom-humidity">
+        <span class="app-page__bottom-humidity-text">Влажность</span>
+        <span class="app-page__bottom-humidity-value">60%</span>
+      </div>
+      <div class="app-page__bottom-rain-chance">
+        <span class="app-page__bottom-rain-chance-text">Вероятность дождя</span>
+        <span class="app-page__bottom-rain-chance-value">10%</span>
+      </div>
+    </div>
+  </main>
 
   <script src="js/script.js"></script>
 </body>
