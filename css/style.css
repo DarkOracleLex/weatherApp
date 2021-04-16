@@ -125,12 +125,7 @@ ul {
   width: 140px;
   height: 140px;
 
-  background-color: rgba(
-    255,
-    255,
-    2552,
-    0.2
-  );
+  display: flex;
 }
 
 .app-page__middle-temp-value {
@@ -163,5 +158,4 @@ ul {
   margin-top: 12px;
 
   font-size: 25px;
-  opacity: 0.6;
 }
