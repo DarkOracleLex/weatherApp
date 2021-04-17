@@ -91,16 +91,19 @@ function escClose(evt) {
 document.querySelector(
   ".app-page__top-left-side-search-input"
 ).oninput = function () {
-  let val = this.value.trim();
+  let val = this.value
+    .trim()
+    .toLowerCase();
   let items = document.querySelectorAll(
     ".app-page__top-left-side-search-cities-list-item"
   );
 
   if (val !== "") {
-    items.forEach(function (elem) {
+    items.forEach((elem) => {
       if (
-        elem.innerText.search(val) !==
-        -1
+        elem.innerText
+          .toLowerCase()
+          .search(val) !== -1
       ) {
         elem.classList.add(
           "app-page__top-left-side-search-cities-list-item--show"
@@ -112,7 +115,7 @@ document.querySelector(
       }
     });
   } else {
-    items.forEach(function (elem) {
+    items.forEach((elem) => {
       elem.classList.remove(
         "app-page__top-left-side-search-cities-list-item--show"
       );
