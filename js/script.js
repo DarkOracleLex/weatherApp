@@ -78,7 +78,7 @@ function toggleVisuallyHidden(elem) {
   );
 }
 
-//Закрываем на ESC
+//Скрываем поиск на ESC
 function escClose(evt) {
   if (evt.keyCode == 27) {
     document
@@ -125,6 +125,7 @@ document.querySelector(
   }
 };
 
+//Смена города при клике
 let buttons = document.querySelectorAll(
   ".app-page__top-left-side-search-cities-list-item"
 );
@@ -139,10 +140,23 @@ buttons.forEach((elem) => {
       elem.dataset.coordinates
     );
 
+    //Скрываем поиск
     document
       .querySelector(
         ".app-page__top-left-side-search"
       )
       .classList.add("visually-hidden");
+
+    //Очищаем строку поиска
+    document.querySelector(
+      ".app-page__top-left-side-search-input"
+    ).value = "";
+
+    //Скрываем все найденные элементы
+    buttons.forEach((elem) => {
+      elem.classList.remove(
+        "app-page__top-left-side-search-cities-list-item--show"
+      );
+    });
   });
 });
