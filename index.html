@@ -12,26 +12,38 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-  <h1 class="visually-hidden">Приложение для просмотра погоды</h1>
+<body onkeydown="escClose(event)">
+  <h1 class=" visually-hidden">Приложение для просмотра погоды</h1>
   <main class="app-page">
     <div class="app-page__top">
       <div class="app-page__top-left-side">
-        <!-- 
-          TODO пока тут написано Омск, нужно чтоб подставлял город
-        -->
+        <!-- TODO пока тут написано Омск, нужно чтоб подставлял город -->
         <p class="app-page__top-left-side-city">Омск</p>
         <div class="app-page__top-left-side-btn">
-          <button class="app-page__top-left-side-btn-change-city btn" onclick="countRabbits()">Сменить город</button>
+          <button class="app-page__top-left-side-btn-change-city btn"
+            onclick="toggleVisuallyHidden(document.querySelector('.app-page__top-left-side-search'))">
+            Сменить город
+          </button>
           <button class="app-page__top-left-side-btn-find-location btn">Моё местоположение</button>
         </div>
-
-        <input class="app-page__top-left-side-search visually-hidden" value="Город"></input>
+        <div class="app-page__top-left-side-search visually-hidden">
+          <div class="app-page__top-left-side-search-input-wrap">
+            <input type="search" class="app-page__top-left-side-search-input" value="Город">
+            <span class="app-page__top-left-side-search-ok ">ok</span>
+          </div>
+          <ul class="app-page__top-left-side-search-cities-list">
+            <li class="app-page__top-left-side-search-cities-list-item">Омск</li>
+            <li class="app-page__top-left-side-search-cities-list-item">Воронеж</li>
+            <li class="app-page__top-left-side-search-cities-list-item">Рязань</li>
+            <li class="app-page__top-left-side-search-cities-list-item">Москва</li>
+          </ul>
+        </div>
       </div>
       <div class="app-page__top-right-side">
         <div class="app-page__top-right-side-scale-change">
-          <button class="app-page__top-right-side-scale-change-celsius btn btn-scale-change--active">C</button>
-          <button class="app-page__top-right-side-scale-change-fahrenheit btn">F</button>
+          <button
+            class="app-page__top-right-side-scale-change-btn btn app-page__top-right-side-scale-change-btn--active">C</button>
+          <button class="app-page__top-right-side-scale-change-btn btn">F</button>
         </div>
       </div>
     </div>

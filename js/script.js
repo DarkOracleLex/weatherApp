@@ -1,3 +1,4 @@
+//Получаем и отображаем погоду
 function getWeather() {
   //Получаем прогноз в массив data
   fetch(
@@ -68,12 +69,53 @@ function getWeather() {
 
 getWeather();
 
-function countRabbits(params) {
-  document
-    .querySelector(
-      ".app-page__top-left-side-search"
-    )
-    .classList.toggle(
-      "visually-hidden"
-    );
+//Переключаем .visually-hidden
+function toggleVisuallyHidden(elem) {
+  elem.classList.toggle(
+    "visually-hidden"
+  );
 }
+
+//Закрываем на ESC
+function escClose(evt) {
+  if (evt.keyCode == 27) {
+    document
+      .querySelector(
+        ".app-page__top-left-side-search"
+      )
+      .classList.add("visually-hidden");
+  }
+}
+
+//Умный поиск
+document.querySelector(
+  ".app-page__top-left-side-search-input"
+).oninput = function () {
+  let val = this.value.trim();
+  let items = document.querySelectorAll(
+    ".app-page__top-left-side-search-cities-list-item"
+  );
+
+  if (val !== "") {
+    items.forEach(function (elem) {
+      if (
+        elem.innerText.search(val) !==
+        -1
+      ) {
+        elem.classList.add(
+          "app-page__top-left-side-search-cities-list-item--show"
+        );
+      } else {
+        elem.classList.remove(
+          "app-page__top-left-side-search-cities-list-item--show"
+        );
+      }
+    });
+  } else {
+    items.forEach(function (elem) {
+      elem.classList.remove(
+        "app-page__top-left-side-search-cities-list-item--show"
+      );
+    });
+  }
+};
