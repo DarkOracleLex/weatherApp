@@ -1,8 +1,10 @@
 //Получаем и отображаем погоду
-function getWeather() {
+function getWeather(
+  coordinates = "lat=55.0&lon=73.400002"
+) {
   //Получаем прогноз в массив data
   fetch(
-    "https://api.openweathermap.org/data/2.5/onecall?lat=55.0&lon=73.400002&exclude=alerts,minutesly,hourly&lang=ru&appid=0dc8b590c550c2291b49cb1f99a2c58d"
+    `https://api.openweathermap.org/data/2.5/onecall?${coordinates}&exclude=alerts,minutesly,hourly&lang=ru&appid=0dc8b590c550c2291b49cb1f99a2c58d`
   )
     .then(function (resp) {
       return resp.json();
@@ -122,3 +124,25 @@ document.querySelector(
     });
   }
 };
+
+let buttons = document.querySelectorAll(
+  ".app-page__top-left-side-search-cities-list-item"
+);
+
+buttons.forEach((elem) => {
+  elem.addEventListener("click", () => {
+    document.querySelector(
+      ".app-page__top-left-side-city"
+    ).textContent = elem.innerText;
+
+    getWeather(
+      elem.dataset.coordinates
+    );
+
+    document
+      .querySelector(
+        ".app-page__top-left-side-search"
+      )
+      .classList.add("visually-hidden");
+  });
+});
