@@ -145,6 +145,10 @@ ul {
   display: block;
 }
 
+.app-page__top-right-side {
+  align-self: baseline;
+}
+
 .app-page__top-right-side-scale-change {
   border: 1px solid
     rgba(255, 255, 255, 0.4);
@@ -200,6 +204,7 @@ ul {
 .app-page__bottom {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   margin-top: 230px;
   margin-left: 25px;
@@ -219,4 +224,16 @@ ul {
   margin-top: 12px;
 
   font-size: 25px;
+}
+
+@media only screen and (max-width: 760px) {
+  .app-page__top-left-side-search {
+    width: 400px;
+  }
+
+  .app-page__bottom-item {
+    flex-basis: 35%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
 }
