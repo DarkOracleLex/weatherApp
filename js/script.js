@@ -160,3 +160,18 @@ buttons.forEach((elem) => {
     });
   });
 });
+
+//Скрытие по нажатию вне области поиска
+document.addEventListener(
+  "mouseup",
+  (e) => {
+    let block = document.querySelector(
+      ".app-page__top-left-side-search"
+    ); // определяем элемент, к которому будем применять условия
+    if (!block.contains(e.target)) {
+      block.classList.add(
+        "visually-hidden"
+      ); // если условия выполняются - скрываем наш элемент
+    }
+  }
+);
