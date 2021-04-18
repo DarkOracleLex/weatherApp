@@ -1,6 +1,7 @@
 //Получаем и отображаем погоду
 function getWeather(
-  coordinates = "lat=55.0&lon=73.400002"
+  coordinates = "lat=55.0&lon=73.400002",
+  num = 273
 ) {
   //Получаем прогноз в массив data
   fetch(
@@ -22,7 +23,7 @@ function getWeather(
         ".app-page__middle-temp-value"
       ).innerHTML =
         Math.round(
-          data.current.temp - 273
+          data.current.temp - num
         ) + "&deg;";
 
       //data.current.weather[0]["description"] добавляем описание погоды
@@ -62,7 +63,9 @@ function getWeather(
       document.querySelector(
         ".app-page__bottom-rain-chance-value"
       ).textContent =
-        +data.daily[0].pop * 100 + "%";
+        Math.round(
+          +data.daily[0].pop * 100
+        ) + "%";
     })
     .catch(function () {
       //Обрабатываем ошибки
@@ -136,8 +139,25 @@ buttons.forEach((elem) => {
       ".app-page__top-left-side-city"
     ).textContent = elem.innerText;
 
+    document.querySelector(
+      ".app-page__top-left-side-city"
+    ).dataset.coordinates =
+      elem.dataset.coordinates;
+
     getWeather(
       elem.dataset.coordinates
+    );
+
+    let buttonC = document.querySelectorAll(
+      ".app-page__top-right-side-scale-change-btn"
+    )[0];
+
+    buttonC.classList.add(
+      "app-page__top-right-side-scale-change-btn--active"
+    );
+
+    buttonC.nextElementSibling.classList.remove(
+      "app-page__top-right-side-scale-change-btn--active"
     );
 
     //Скрываем поиск
@@ -175,3 +195,50 @@ document.addEventListener(
     }
   }
 );
+
+//переключатель C и F
+let buttonsCAndF = document.querySelectorAll(
+  ".app-page__top-right-side-scale-change-btn"
+);
+
+buttonsCAndF.forEach((el) => {
+  el.addEventListener("click", () => {
+    if (
+      !el.classList.contains(
+        "app-page__top-right-side-scale-change-btn--active"
+      )
+    ) {
+      el.classList.toggle(
+        "app-page__top-right-side-scale-change-btn--active"
+      );
+      if (el.nextElementSibling) {
+        el.nextElementSibling.classList.toggle(
+          "app-page__top-right-side-scale-change-btn--active"
+        );
+
+        let num = 273;
+
+        getWeather(
+          document.querySelector(
+            ".app-page__top-left-side-city"
+          ).dataset.coordinates,
+          num
+        );
+      }
+      if (el.previousElementSibling) {
+        el.previousElementSibling.classList.toggle(
+          "app-page__top-right-side-scale-change-btn--active"
+        );
+
+        let num = 0;
+
+        getWeather(
+          document.querySelector(
+            ".app-page__top-left-side-city"
+          ).dataset.coordinates,
+          num
+        );
+      }
+    }
+  });
+});

@@ -72,11 +72,14 @@ ul {
   margin: 0;
 }
 
-.app-page__top-left-side-btn-change-city,
-.app-page__top-left-side-btn-find-location {
+.app-page__top-left-side-btn-item {
   opacity: 0.6;
 
   font-size: 18px;
+}
+
+.app-page__top-left-side-btn-item:hover {
+  opacity: 0.8;
 }
 
 .app-page__top-left-side-btn {
@@ -167,6 +170,10 @@ ul {
   padding: 4px 12px;
 }
 
+.app-page__top-right-side-scale-change-btn:hover {
+  opacity: 0.6;
+}
+
 .app-page__top-right-side-scale-change-btn--active {
   background-color: rgba(
     255,
@@ -174,6 +181,10 @@ ul {
     255,
     0.2
   );
+  opacity: 1;
+}
+
+.app-page__top-right-side-scale-change-btn--active:hover {
   opacity: 1;
 }
 
