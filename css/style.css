@@ -55,13 +55,16 @@ ul {
 
 .app-page__top {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+
+  margin-left: 20px;
 }
 
 .app-page__top-left-side {
   position: relative;
 
-  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 .app-page__top-left-side-city {
@@ -147,6 +150,8 @@ ul {
 
 .app-page__top-right-side {
   align-self: baseline;
+
+  margin-right: 20px;
 }
 
 .app-page__top-right-side-scale-change {
@@ -173,7 +178,7 @@ ul {
 }
 
 .app-page__middle {
-  margin-top: 210px;
+  margin-top: 200px;
 
   display: flex;
   flex-direction: column;
@@ -207,8 +212,8 @@ ul {
   flex-wrap: wrap;
 
   margin-top: 230px;
-  margin-left: 25px;
-  margin-right: 115px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .app-page__bottom-item {
@@ -233,7 +238,6 @@ ul {
 
   .app-page__bottom-item {
     flex-basis: 35%;
-    text-align: center;
     margin-bottom: 30px;
   }
 }
