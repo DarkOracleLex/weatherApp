@@ -1,6 +1,6 @@
 //Получаем и отображаем погоду
 function getWeather(
-  coordinates = "lat=55.0&lon=73.400002",
+  coordinates,
   num = 273
 ) {
   //Получаем прогноз в массив data
@@ -11,12 +11,7 @@ function getWeather(
       return resp.json();
     })
     .then(function (data) {
-      console.log(data);
-
-      //добавляем название города
-      // document.querySelector(
-      //   ".app-page__top-left-side-city"
-      // ).textContent = data.name;
+      // console.log(data);
 
       //data.current.temp содержит значение в Кельвинах, отнимаем от  273, чтобы получить значение в градусах Цельсия
       document.querySelector(
@@ -70,9 +65,25 @@ function getWeather(
     .catch(function () {
       //Обрабатываем ошибки
     });
-}
 
-getWeather();
+  // fetch(
+  //   `https://api.openweathermap.org/data/2.5/weather?${coordinates}&appid=0dc8b590c550c2291b49cb1f99a2c58d`
+  // )
+  //   .then(function (resp) {
+  //     return resp.json();
+  //   })
+  //   .then(function (data) {
+  //     console.log(data);
+
+  //     // добавляем название города
+  //     document.querySelector(
+  //       ".app-page__top-left-side-city"
+  //     ).textContent = data.name;
+  //   })
+  //   .catch(function () {
+  //     //Обрабатываем ошибки
+  //   });
+}
 
 //Переключаем .visually-hidden
 function toggleVisuallyHidden(elem) {
@@ -242,3 +253,83 @@ buttonsCAndF.forEach((el) => {
     }
   });
 });
+
+//Определение текущей позиции
+
+window.onload = function () {
+  let startPos;
+  let geoSuccess = function (position) {
+    startPos = position;
+
+    let posObj = {
+      lat: startPos.coords.latitude,
+      lon: startPos.coords.longitude,
+    };
+
+    console.log(posObj);
+
+    getAndChangeCityName(
+      posObj.lat,
+      posObj.lon
+    );
+
+    getWeather(
+      (coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`)
+    );
+
+    document.querySelector(
+      ".app-page__top-left-side-city"
+    ).dataset.coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`;
+  };
+  navigator.geolocation.getCurrentPosition(
+    geoSuccess
+  );
+};
+
+//Определение города
+
+async function getAndChangeCityName(
+  lat = 55.0,
+  lon = 73.400002
+) {
+  let url =
+    "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
+  let token =
+    "37ebe8c03977cdf30cb3e90dc56bd6bfb1005238";
+  let query = {
+    lat: lat,
+    lon: lon,
+    count: 1,
+    radius_meters: 1000,
+    language: "ru",
+  };
+
+  let options = {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type":
+        "application/json",
+      Accept: "application/json",
+      Authorization: "Token " + token,
+    },
+    body: JSON.stringify(query),
+  };
+
+  let response = await fetch(
+    url,
+    options,
+    {}
+  );
+  let json = await response.json();
+
+  // console.log(json);
+  // console.log(
+  //   json.suggestions[0].data.city
+  // );
+
+  document.querySelector(
+    ".app-page__top-left-side-city"
+  ).innerHTML =
+    json.suggestions[0].data.city;
+}
