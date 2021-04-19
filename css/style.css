@@ -299,18 +299,6 @@ ul {
 }
 
 @media only screen and (max-width: 400px) {
-  .app-page__top-left-side-btn {
-    display: flex;
-
-    justify-content: space-between;
-  }
-
-  .app-page__top-left-side-btn-item {
-    margin: 0;
-  }
-}
-
-@media only screen and (max-width: 375px) {
   body {
     background-color: #7290b9;
   }
@@ -320,7 +308,18 @@ ul {
   }
 
   .app-page__top-left-side-btn {
+    display: flex;
+    justify-content: space-between;
+
     margin-top: 20px;
+  }
+
+  .app-page__top-left-side-btn-item {
+    margin: 0;
+  }
+
+  .app-page__top-left-side-search {
+    width: 332px;
   }
 
   .app-page__top-right-side-scale-change {

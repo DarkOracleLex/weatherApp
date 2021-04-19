@@ -65,24 +65,6 @@ function getWeather(
     .catch(function () {
       //Обрабатываем ошибки
     });
-
-  // fetch(
-  //   `https://api.openweathermap.org/data/2.5/weather?${coordinates}&appid=0dc8b590c550c2291b49cb1f99a2c58d`
-  // )
-  //   .then(function (resp) {
-  //     return resp.json();
-  //   })
-  //   .then(function (data) {
-  //     console.log(data);
-
-  //     // добавляем название города
-  //     document.querySelector(
-  //       ".app-page__top-left-side-city"
-  //     ).textContent = data.name;
-  //   })
-  //   .catch(function () {
-  //     //Обрабатываем ошибки
-  //   });
 }
 
 //Переключаем .visually-hidden
@@ -254,7 +236,7 @@ buttonsCAndF.forEach((el) => {
   });
 });
 
-//Определение текущей позиции
+//Определяем позицию на старте
 
 window.onload = function () {
   let startPos;
@@ -268,18 +250,21 @@ window.onload = function () {
 
     console.log(posObj);
 
+    //вызываем и меняем город по координатам
     getAndChangeCityName(
       posObj.lat,
       posObj.lon
     );
 
-    getWeather(
-      (coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`)
-    );
-
+    //меняем датасет по координатам
     document.querySelector(
       ".app-page__top-left-side-city"
     ).dataset.coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`;
+
+    //вызываем и меняем погоду по координатам
+    getWeather(
+      (coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`)
+    );
   };
   navigator.geolocation.getCurrentPosition(
     geoSuccess
@@ -321,10 +306,13 @@ async function getAndChangeCityName(
     options,
     {}
   );
+
+  //запращиваем json о местонахождении
   let json = await response.json();
 
   // console.log(json);
 
+  //если определило город - пишем его, если нет - пишем регион
   if (json.suggestions[0].data.city) {
     document.querySelector(
       ".app-page__top-left-side-city"
