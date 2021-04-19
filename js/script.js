@@ -324,12 +324,16 @@ async function getAndChangeCityName(
   let json = await response.json();
 
   // console.log(json);
-  // console.log(
-  //   json.suggestions[0].data.city
-  // );
 
-  document.querySelector(
-    ".app-page__top-left-side-city"
-  ).innerHTML =
-    json.suggestions[0].data.city;
+  if (json.suggestions[0].data.city) {
+    document.querySelector(
+      ".app-page__top-left-side-city"
+    ).innerHTML =
+      json.suggestions[0].data.city;
+  } else {
+    document.querySelector(
+      ".app-page__top-left-side-city"
+    ).innerHTML =
+      json.suggestions[0].data.region_with_type;
+  }
 }
