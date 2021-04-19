@@ -58,13 +58,21 @@ ul {
   flex-wrap: wrap;
   justify-content: space-between;
 
-  margin-left: 20px;
+  margin: 0 20px;
 }
 
 .app-page__top-left-side {
   position: relative;
 
   margin-bottom: 10px;
+
+  width: 100%;
+}
+
+.app-page__city-scale-wrap {
+  display: flex;
+
+  justify-content: space-between;
 }
 
 .app-page__top-left-side-city {
@@ -169,8 +177,6 @@ ul {
 
 .app-page__top-right-side {
   align-self: baseline;
-
-  margin-right: 20px;
 }
 
 .app-page__top-right-side-scale-change {
@@ -179,6 +185,8 @@ ul {
   border-radius: 8px;
 
   position: relative;
+
+  display: flex;
 }
 
 .app-page__top-right-side-scale-change::after {
@@ -230,11 +238,8 @@ ul {
   align-items: center;
 }
 
-.app-page__middle-temp-icon {
-  width: 140px;
+.app-page__middle-temp-icon img {
   height: 140px;
-
-  display: flex;
 }
 
 .app-page__middle-temp-value {
@@ -278,5 +283,79 @@ ul {
   .app-page__bottom-item {
     flex-basis: 35%;
     margin-bottom: 30px;
+  }
+
+  .app-page__middle-temp-value {
+    font-size: 120px;
+  }
+
+  .app-page__top-left-side-city {
+    font-size: 30px;
+  }
+
+  .app-page__top-left-side-btn-item {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .app-page__top-left-side-btn {
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  .app-page__top-left-side-btn-item {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  body {
+    background-color: #7290b9;
+  }
+
+  .app-page {
+    margin-top: 20px;
+  }
+
+  .app-page__top-left-side-btn {
+    margin-top: 20px;
+  }
+
+  .app-page__top-right-side-scale-change {
+    margin-top: 6px;
+    margin-right: 20px;
+  }
+
+  .app-page__middle {
+    margin-top: 110px;
+  }
+
+  .app-page__middle-temp-value {
+    font-size: 90px;
+    font-weight: 300;
+  }
+
+  .app-page__middle-temp-description {
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .app-page__bottom {
+    margin-top: 130px;
+  }
+
+  .app-page__bottom-item {
+    flex-grow: 1;
+  }
+
+  .app-page__bottom-text-item {
+    font-size: 15px;
+  }
+
+  .app-page__bottom-value-item {
+    font-size: 18px;
+    margin-top: 8px;
   }
 }

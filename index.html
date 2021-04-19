@@ -17,7 +17,16 @@
   <main class="app-page">
     <div class="app-page__top">
       <div class="app-page__top-left-side">
-        <p class="app-page__top-left-side-city" data-coordinates="lat=55.0&lon=73.400002">Омск</p>
+        <div class="app-page__city-scale-wrap">
+          <p class="app-page__top-left-side-city" data-coordinates="lat=55.0&lon=73.400002">Омск</p>
+          <div class="app-page__top-right-side">
+            <div class="app-page__top-right-side-scale-change">
+              <button
+                class="app-page__top-right-side-scale-change-btn btn app-page__top-right-side-scale-change-btn--active">C</button>
+              <button class="app-page__top-right-side-scale-change-btn btn">F</button>
+            </div>
+          </div>
+        </div>
         <div class="app-page__top-left-side-btn">
           <button class="app-page__top-left-side-btn-item app-page__top-left-side-btn-change-city btn"
             onclick="toggleVisuallyHidden(document.querySelector('.app-page__top-left-side-search'))">
@@ -45,13 +54,6 @@
               Москва
             </li>
           </ul>
-        </div>
-      </div>
-      <div class="app-page__top-right-side">
-        <div class="app-page__top-right-side-scale-change">
-          <button
-            class="app-page__top-right-side-scale-change-btn btn app-page__top-right-side-scale-change-btn--active">C</button>
-          <button class="app-page__top-right-side-scale-change-btn btn">F</button>
         </div>
       </div>
     </div>
