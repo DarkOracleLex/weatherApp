@@ -103,12 +103,39 @@ function getWeather(
           break;
       }
 
-      //data.current.wind_speed добавляем скорость ветра
+      //data.current.wind_speed добавляем скорость ветра и направление
+      let direction = "";
+
+      function getDirection(angle) {
+        let directions = [
+          "северный",
+          "северо-западный",
+          "западный",
+          "южно-западный",
+          "южный",
+          "южно-восточный",
+          "восточный",
+          "северо-восточный",
+        ];
+        return directions[
+          Math.round(
+            ((angle %= 360) < 0
+              ? angle + 360
+              : angle) / 45
+          ) % 8
+        ];
+      }
+
+      direction += getDirection(
+        data.current.wind_deg
+      );
+
       document.querySelector(
         ".app-page__bottom-wind-value"
       ).textContent =
         data.current.wind_speed +
-        " м/c";
+        " м/c, " +
+        direction;
 
       //data.current.pressure добавляем давление
       document.querySelector(
