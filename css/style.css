@@ -365,6 +365,18 @@ ul {
     font-size: 18px;
     margin-top: 8px;
   }
+
+  .app-page__top-left-side-search-input {
+    font-size: 15px;
+  }
+
+  .app-page__top-left-side-search-ok {
+    font-size: 15px;
+  }
+
+  .app-page__top-left-side-search-cities-list-item {
+    font-size: 15px;
+  }
 }
 
 @media only screen and (max-width: 338px) {
