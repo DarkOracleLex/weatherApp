@@ -307,7 +307,7 @@ async function getAndChangeCityName(
     {}
   );
 
-  //запращиваем json о местонахождении
+  //запрашиваем json о местонахождении
   let json = await response.json();
 
   // console.log(json);
