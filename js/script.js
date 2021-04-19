@@ -1,6 +1,6 @@
 //Получаем и отображаем погоду
 function getWeather(
-  coordinates,
+  coordinates = "lat=55.0&lon=73.400002",
   num = 273
 ) {
   //Получаем прогноз в массив data
@@ -173,6 +173,8 @@ function getWeather(
     });
 }
 
+getWeather("lat=55.0&lon=73.400002");
+
 //Переключаем .visually-hidden
 function toggleVisuallyHidden(elem) {
   elem.classList.toggle(
@@ -344,38 +346,36 @@ buttonsCAndF.forEach((el) => {
 
 //Определяем позицию на старте
 
-window.onload = function () {
-  let startPos;
-  let geoSuccess = function (position) {
-    startPos = position;
+let startPos;
+let geoSuccess = function (position) {
+  startPos = position;
 
-    let posObj = {
-      lat: startPos.coords.latitude,
-      lon: startPos.coords.longitude,
-    };
-
-    // console.log(posObj);
-
-    //вызываем и меняем город по координатам
-    getAndChangeCityName(
-      posObj.lat,
-      posObj.lon
-    );
-
-    //меняем датасет по координатам
-    document.querySelector(
-      ".app-page__top-left-side-city"
-    ).dataset.coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`;
-
-    //вызываем и меняем погоду по координатам
-    getWeather(
-      (coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`)
-    );
+  let posObj = {
+    lat: startPos.coords.latitude,
+    lon: startPos.coords.longitude,
   };
-  navigator.geolocation.getCurrentPosition(
-    geoSuccess
+
+  // console.log(posObj);
+
+  //вызываем и меняем город по координатам
+  getAndChangeCityName(
+    posObj.lat,
+    posObj.lon
+  );
+
+  //меняем датасет по координатам
+  document.querySelector(
+    ".app-page__top-left-side-city"
+  ).dataset.coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`;
+
+  //вызываем и меняем погоду по координатам
+  getWeather(
+    (coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`)
   );
 };
+navigator.geolocation.getCurrentPosition(
+  geoSuccess
+);
 
 //добавляем определение позиции по клику на кнопку "моё местоположение"
 
