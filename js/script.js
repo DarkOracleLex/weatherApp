@@ -5,13 +5,13 @@ function getWeather(
 ) {
   //Получаем прогноз в массив data
   fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?${coordinates}&exclude=alerts,minutesly,hourly&lang=ru&appid=0dc8b590c550c2291b49cb1f99a2c58d`
+    `https://api.openweathermap.org/data/2.5/onecall?${coordinates}&exclude=alerts,minutely,hourly&lang=ru&appid=0dc8b590c550c2291b49cb1f99a2c58d`
   )
     .then(function (resp) {
       return resp.json();
     })
     .then(function (data) {
-      // console.log(data);
+      console.log(data);
 
       //data.current.temp содержит значение в Кельвинах, отнимаем от  273, чтобы получить значение в градусах Цельсия
       document.querySelector(
@@ -30,9 +30,78 @@ function getWeather(
         ];
 
       //data.current.weather[0]["icon"] добавляем иконку погоды
+
+      //сначала иконка с сервиса
       document.querySelector(
         ".app-page__middle-temp-icon"
       ).innerHTML = `<img src="https://openweathermap.org/img/wn/${data.current.weather[0]["icon"]}@2x.png">`;
+
+      //если можно, меняем красивой
+      switch (
+        data.current.weather[0]["id"]
+      ) {
+        case 200:
+        case 201:
+        case 202:
+        case 210:
+        case 211:
+        case 212:
+        case 221:
+        case 230:
+        case 231:
+        case 232:
+          document.querySelector(
+            ".app-page__middle-temp-icon"
+          ).innerHTML = `<img src="../img/strom.svg">`;
+          break;
+
+        case 300:
+        case 301:
+        case 302:
+        case 310:
+        case 311:
+        case 312:
+        case 313:
+        case 314:
+        case 321:
+        case 500:
+        case 501:
+        case 502:
+        case 503:
+        case 504:
+        case 511:
+        case 520:
+        case 521:
+        case 522:
+        case 531:
+          document.querySelector(
+            ".app-page__middle-temp-icon"
+          ).innerHTML = `<img src="../img/rain.svg">`;
+          break;
+
+        case 800:
+          document.querySelector(
+            ".app-page__middle-temp-icon"
+          ).innerHTML = `<img src="../img/sun.svg">`;
+          break;
+
+        case 801:
+        case 802:
+          document.querySelector(
+            ".app-page__middle-temp-icon"
+          ).innerHTML = `<img src="../img/partly-cloudy.svg">`;
+          break;
+
+        case 803:
+        case 804:
+          document.querySelector(
+            ".app-page__middle-temp-icon"
+          ).innerHTML = `<img src="../img/cloud.svg">`;
+          break;
+
+        default:
+          break;
+      }
 
       //data.current.wind_speed добавляем скорость ветра
       document.querySelector(
@@ -248,7 +317,7 @@ window.onload = function () {
       lon: startPos.coords.longitude,
     };
 
-    console.log(posObj);
+    // console.log(posObj);
 
     //вызываем и меняем город по координатам
     getAndChangeCityName(

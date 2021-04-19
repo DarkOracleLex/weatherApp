@@ -97,13 +97,14 @@ ul {
 .app-page__top-left-side-btn-find-location::after {
   position: absolute;
   content: "";
-  width: 15px;
+  width: 20px;
   height: 20px;
-  left: -22px;
+  left: -28px;
   top: 40%;
   transform: translateY(-50%);
 
-  background-image: url("../img/Path\ 2.png");
+  background: url("../img/location.svg")
+    center;
 }
 
 .app-page__top-left-side-btn {
