@@ -271,6 +271,46 @@ window.onload = function () {
   );
 };
 
+//добавляем определение позиции по клику на кнопку "моё местоположение"
+
+document
+  .querySelector(
+    ".app-page__top-left-side-btn-find-location"
+  )
+  .addEventListener("click", () => {
+    let startPos;
+    let geoSuccess = function (
+      position
+    ) {
+      startPos = position;
+
+      let posObj = {
+        lat: startPos.coords.latitude,
+        lon: startPos.coords.longitude,
+      };
+
+      //вызываем и меняем город по координатам
+      getAndChangeCityName(
+        posObj.lat,
+        posObj.lon
+      );
+
+      //меняем датасет по координатам
+      document.querySelector(
+        ".app-page__top-left-side-city"
+      ).dataset.coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`;
+
+      //вызываем и меняем погоду по координатам
+      getWeather(
+        (coordinates = `lat=${posObj.lat}&lon=${posObj.lon}`)
+      );
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      geoSuccess
+    );
+  });
+
 //Определение города
 
 async function getAndChangeCityName(
