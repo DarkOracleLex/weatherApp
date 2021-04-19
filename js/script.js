@@ -52,7 +52,9 @@ function getWeather(
         case 232:
           document.querySelector(
             ".app-page__middle-temp-icon"
-          ).innerHTML = `<img src="../img/strom.svg">`;
+          ).innerHTML = `<object type="image/svg+xml" data="img/strom.svg" width="140" height="140">
+          <img src="img/strom.svg" width="140" height="140" alt="image format png" />
+        </object>`;
           break;
 
         case 300:
@@ -76,27 +78,35 @@ function getWeather(
         case 531:
           document.querySelector(
             ".app-page__middle-temp-icon"
-          ).innerHTML = `<img src="../img/rain.svg">`;
+          ).innerHTML = `<object type="image/svg+xml" data="img/rain.svg" width="140" height="140">
+            <img src="img/rain.svg" width="140" height="140" alt="image format png" />
+          </object>`;
           break;
 
         case 800:
           document.querySelector(
             ".app-page__middle-temp-icon"
-          ).innerHTML = `<img src="../img/sun.svg">`;
+          ).innerHTML = `<object type="image/svg+xml" data="img/sun.svg" width="140" height="140">
+          <img src="img/sun.svg" width="140" height="140" alt="image format png" />
+        </object>`;
           break;
 
         case 801:
         case 802:
           document.querySelector(
             ".app-page__middle-temp-icon"
-          ).innerHTML = `<img src="../img/partly-cloudy.svg">`;
+          ).innerHTML = `<object type="image/svg+xml" data="img/partly-cloudy.svg" width="140" height="140">
+          <img src="img/partly-cloudy.svg" width="140" height="140" alt="image format png" />
+        </object>`;
           break;
 
         case 803:
         case 804:
           document.querySelector(
             ".app-page__middle-temp-icon"
-          ).innerHTML = `<img src="../img/cloud.svg">`;
+          ).innerHTML = `<object type="image/svg+xml" data="img/cloud.svg" width="140" height="140">
+          <img src="img/cloud.svg" width="140" height="140" alt="image format png" />
+        </object>`;
           break;
 
         default:

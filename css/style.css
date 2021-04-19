@@ -379,7 +379,7 @@ ul {
     font-size: 15px;
   }
 
-  .app-page__middle-temp-icon img {
+  .app-page__middle-temp-icon object {
     height: 120px;
     width: 120px;
   }
